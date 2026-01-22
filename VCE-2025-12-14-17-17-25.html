@@ -1,0 +1,1263 @@
+<<!doctype html>
+<html lang="id" class="scroll-smooth h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dunia Fantasi - Destinasi Wisata Terbaik Indonesia</title>
+  <meta name="description" content="Jelajahi keajaiban Dufan, taman hiburan terbesar di Indonesia dengan berbagai wahana seru dan atraksi menarik">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .dark {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+        }
+        
+        .light {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.6s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.6s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .chatbot-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .modal-backdrop {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+        
+        .weather-widget {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .stat-counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .carousel-item {
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .star-rating {
+            color: #fbbf24;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="light bg-white text-gray-900 h-full overflow-auto" id="mainBody">
+  <div class="w-full h-full"><!-- Header/Navbar -->
+   <nav class="fixed w-full top-0 z-50 bg-white shadow-md transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center h-16">
+      <div class="flex items-center"><span class="text-2xl font-bold gradient-text" id="siteTitle">Dunia Fantasi</span>
+      </div><!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8"><a href="#home" class="nav-link text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Beranda" data-lang-en="Home">Beranda</a> <a href="#attractions" class="nav-link text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Wahana" data-lang-en="Attractions">Wahana</a> <a href="#tickets" class="nav-link text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Tiket" data-lang-en="Tickets">Tiket</a> <a href="#gallery" class="nav-link text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Galeri" data-lang-en="Gallery">Galeri</a> <a href="#events" class="nav-link text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Event" data-lang-en="Events">Event</a> <a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Kontak" data-lang-en="Contact">Kontak</a>
+      </div><!-- Icons -->
+      <div class="flex items-center space-x-4"><!-- Language Switcher --> <button id="langBtn" class="p-2 rounded-full hover:bg-gray-100 transition" title="Change Language"> <i class="fas fa-globe text-gray-700"></i> </button> <!-- Search --> <button id="searchBtn" class="p-2 rounded-full hover:bg-gray-100 transition"> <i class="fas fa-search text-gray-700"></i> </button> <!-- Dark Mode Toggle --> <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-100 transition"> <i class="fas fa-moon text-gray-700"></i> </button> <!-- Mobile Menu Toggle --> <button id="mobileMenuBtn" class="md:hidden p-2 rounded-full hover:bg-gray-100 transition"> <i class="fas fa-bars text-gray-700"></i> </button>
+      </div>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+     <div class="px-4 py-4 space-y-3"><a href="#home" class="block text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Beranda" data-lang-en="Home">Beranda</a> <a href="#attractions" class="block text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Wahana" data-lang-en="Attractions">Wahana</a> <a href="#tickets" class="block text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Tiket" data-lang-en="Tickets">Tiket</a> <a href="#gallery" class="block text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Galeri" data-lang-en="Gallery">Galeri</a> <a href="#events" class="block text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Event" data-lang-en="Events">Event</a> <a href="#contact" class="block text-gray-700 hover:text-purple-600 font-medium" data-lang-id="Kontak" data-lang-en="Contact">Kontak</a>
+     </div>
+    </div>
+   </nav><!-- Search Modal -->
+   <div id="searchModal" class="hidden fixed inset-0 z-50 modal-backdrop">
+    <div class="flex items-center justify-center min-h-screen px-4">
+     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-6">
+      <div class="flex justify-between items-center mb-4">
+       <h3 class="text-xl font-bold text-gray-900" data-lang-id="Cari Destinasi" data-lang-en="Search Destination">Cari Destinasi</h3><button id="closeSearch" class="text-gray-500 hover:text-gray-700"> <i class="fas fa-times text-xl"></i> </button>
+      </div><input type="text" id="searchInput" placeholder="Ketik nama wahana..." class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500" data-lang-id-placeholder="Ketik nama wahana..." data-lang-en-placeholder="Type attraction name...">
+      <div id="searchResults" class="mt-4 space-y-2 max-h-64 overflow-y-auto"></div>
+     </div>
+    </div>
+   </div><!-- Hero Section -->
+   <section id="home" class="relative pt-16 parallax-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,%3Csvg width=&quot;1920&quot; height=&quot;1080&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cdefs%3E%3ClinearGradient id=&quot;grad1&quot; x1=&quot;0%25&quot; y1=&quot;0%25&quot; x2=&quot;100%25&quot; y2=&quot;100%25&quot;%3E%3Cstop offset=&quot;0%25&quot; style=&quot;stop-color:%23667eea;stop-opacity:1&quot; /%3E%3Cstop offset=&quot;100%25&quot; style=&quot;stop-color:%23764ba2;stop-opacity:1&quot; /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=&quot;1920&quot; height=&quot;1080&quot; fill=&quot;url(%23grad1)&quot;/%3E%3C/svg%3E');">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-48">
+     <div class="text-center text-white fade-in">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6" id="heroTitle">Jelajahi Keajaiban Dufan</h1>
+      <p class="text-xl md:text-2xl mb-8 text-gray-200" id="heroSubtitle">Taman hiburan terbesar di Indonesia dengan berbagai wahana seru</p>
+      <div class="flex flex-wrap justify-center gap-4"><a href="#tickets" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105" data-lang-id="Beli Tiket Sekarang" data-lang-en="Buy Tickets Now">Beli Tiket Sekarang</a> <a href="#attractions" class="glass-effect text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition transform hover:scale-105" data-lang-id="Lihat Wahana" data-lang-en="View Attractions">Lihat Wahana</a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Statistics Counter -->
+   <section class="bg-gradient-to-r from-purple-600 to-purple-800 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+      <div class="fade-in">
+       <div class="text-4xl md:text-5xl font-bold mb-2 stat-counter" id="counter1">
+        0
+       </div>
+       <div class="text-sm md:text-base" data-lang-id="Wahana Seru" data-lang-en="Fun Rides">
+        Wahana Seru
+       </div>
+      </div>
+      <div class="fade-in">
+       <div class="text-4xl md:text-5xl font-bold mb-2 stat-counter" id="counter2">
+        0
+       </div>
+       <div class="text-sm md:text-base" data-lang-id="Pengunjung/Tahun" data-lang-en="Visitors/Year">
+        Pengunjung/Tahun
+       </div>
+      </div>
+      <div class="fade-in">
+       <div class="text-4xl md:text-5xl font-bold mb-2 stat-counter" id="counter3">
+        0
+       </div>
+       <div class="text-sm md:text-base" data-lang-id="Tahun Beroperasi" data-lang-en="Years Operating">
+        Tahun Beroperasi
+       </div>
+      </div>
+      <div class="fade-in">
+       <div class="text-4xl md:text-5xl font-bold mb-2 stat-counter" id="counter4">
+        0
+       </div>
+       <div class="text-sm md:text-base" data-lang-id="Rating Bintang" data-lang-en="Star Rating">
+        Rating Bintang
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Weather Widget -->
+   <section class="py-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="weather-widget rounded-2xl p-6 text-white flex flex-wrap justify-between items-center">
+      <div class="flex items-center space-x-4"><i class="fas fa-sun text-5xl"></i>
+       <div>
+        <div class="text-3xl font-bold">
+         28°C
+        </div>
+        <div class="text-sm" data-lang-id="Cerah Berawan" data-lang-en="Partly Cloudy">
+         Cerah Berawan
+        </div>
+       </div>
+      </div>
+      <div class="mt-4 md:mt-0">
+       <div class="text-sm" data-lang-id="Kondisi Ideal untuk Berkunjung" data-lang-en="Ideal Conditions to Visit">
+        Kondisi Ideal untuk Berkunjung
+       </div>
+       <div class="text-xs opacity-80" data-lang-id="Update: Hari ini, 14:00 WIB" data-lang-en="Updated: Today, 14:00 WIB">
+        Update: Hari ini, 14:00 WIB
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="slide-in-left">
+       <h2 class="text-4xl font-bold mb-6 gradient-text" id="aboutTitle">Tentang Dufan</h2>
+       <p class="text-gray-600 mb-6 leading-relaxed" data-lang-id="Dunia Fantasi (Dufan) adalah taman rekreasi terbesar di Indonesia yang terletak di kawasan Taman Impian Jaya Ancol, Jakarta Utara. Dibuka sejak 1985, Dufan telah menjadi destinasi wisata favorit keluarga dengan lebih dari 40 wahana permainan yang menantang dan menghibur." data-lang-en="Dunia Fantasi (Dufan) is the largest recreation park in Indonesia located in Taman Impian Jaya Ancol, North Jakarta. Opened since 1985, Dufan has become a favorite family tourist destination with more than 40 challenging and entertaining rides.">Dunia Fantasi (Dufan) adalah taman rekreasi terbesar di Indonesia yang terletak di kawasan Taman Impian Jaya Ancol, Jakarta Utara. Dibuka sejak 1985, Dufan telah menjadi destinasi wisata favorit keluarga dengan lebih dari 40 wahana permainan yang menantang dan menghibur.</p>
+       <div class="grid grid-cols-2 gap-4">
+        <div class="bg-purple-50 p-4 rounded-lg"><i class="fas fa-clock text-purple-600 text-2xl mb-2"></i>
+         <div class="font-semibold text-gray-900" data-lang-id="Buka Setiap Hari" data-lang-en="Open Daily">
+          Buka Setiap Hari
+         </div>
+         <div class="text-sm text-gray-600">
+          10:00 - 18:00 WIB
+         </div>
+        </div>
+        <div class="bg-purple-50 p-4 rounded-lg"><i class="fas fa-map-marker-alt text-purple-600 text-2xl mb-2"></i>
+         <div class="font-semibold text-gray-900" data-lang-id="Lokasi Strategis" data-lang-en="Strategic Location">
+          Lokasi Strategis
+         </div>
+         <div class="text-sm text-gray-600">
+          Ancol, Jakarta Utara
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="slide-in-right">
+       <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl p-8 text-white">
+        <h3 class="text-2xl font-bold mb-4" data-lang-id="Mengapa Memilih Dufan?" data-lang-en="Why Choose Dufan?">Mengapa Memilih Dufan?</h3>
+        <ul class="space-y-3">
+         <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-3"></i> <span data-lang-id="Lebih dari 40 wahana permainan untuk segala usia" data-lang-en="More than 40 rides for all ages">Lebih dari 40 wahana permainan untuk segala usia</span></li>
+         <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-3"></i> <span data-lang-id="Area yang luas dan nyaman untuk keluarga" data-lang-en="Spacious and comfortable area for families">Area yang luas dan nyaman untuk keluarga</span></li>
+         <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-3"></i> <span data-lang-id="Standar keamanan internasional" data-lang-en="International safety standards">Standar keamanan internasional</span></li>
+         <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-3"></i> <span data-lang-id="Event dan pertunjukan menarik sepanjang tahun" data-lang-en="Interesting events and shows throughout the year">Event dan pertunjukan menarik sepanjang tahun</span></li>
+         <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-3"></i> <span data-lang-id="Fasilitas lengkap: restoran, toilet, mushola" data-lang-en="Complete facilities: restaurants, toilets, prayer rooms">Fasilitas lengkap: restoran, toilet, mushola</span></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Attractions with Filter -->
+   <section id="attractions" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4 gradient-text" data-lang-id="Wahana Populer" data-lang-en="Popular Attractions">Wahana Populer</h2>
+      <p class="text-gray-600" data-lang-id="Pilih kategori wahana favoritmu" data-lang-en="Choose your favorite ride category">Pilih kategori wahana favoritmu</p>
+     </div><!-- Filter Buttons -->
+     <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="filter-btn px-6 py-2 rounded-full bg-purple-600 text-white font-semibold hover:bg-purple-700 transition" data-filter="all" data-lang-id="Semua" data-lang-en="All">Semua</button> <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition" data-filter="extreme" data-lang-id="Ekstrem" data-lang-en="Extreme">Ekstrem</button> <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition" data-filter="family" data-lang-id="Keluarga" data-lang-en="Family">Keluarga</button> <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition" data-filter="kids" data-lang-id="Anak-anak" data-lang-en="Kids">Anak-anak</button>
+     </div><!-- Attractions Grid -->
+     <div class="grid md:grid-cols-3 gap-8" id="attractionsGrid"><!-- Card 1 -->
+      <div class="attraction-card card-hover bg-white rounded-2xl overflow-hidden shadow-lg" data-category="extreme">
+       <div class="h-48 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center"><i class="fas fa-rocket text-white text-6xl"></i>
+       </div>
+       <div class="p-6"><span class="inline-block bg-red-100 text-red-600 text-xs font-semibold px-3 py-1 rounded-full mb-2" data-lang-id="Ekstrem" data-lang-en="Extreme">Ekstrem</span>
+        <h3 class="text-xl font-bold mb-2">Halilintar</h3>
+        <p class="text-gray-600 text-sm mb-4" data-lang-id="Roller coaster dengan kecepatan tinggi dan putaran 360 derajat yang memacu adrenalin" data-lang-en="High-speed roller coaster with adrenaline-pumping 360-degree spins">Roller coaster dengan kecepatan tinggi dan putaran 360 derajat yang memacu adrenalin</p>
+        <div class="flex items-center justify-between"><span class="text-sm text-gray-500"><i class="fas fa-user-friends mr-2"></i>Min. 120 cm</span> <button class="text-purple-600 font-semibold hover:text-purple-700" data-lang-id="Detail" data-lang-en="Details">Detail →</button>
+        </div>
+       </div>
+      </div><!-- Card 2 -->
+      <div class="attraction-card card-hover bg-white rounded-2xl overflow-hidden shadow-lg" data-category="family">
+       <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center"><i class="fas fa-water text-white text-6xl"></i>
+       </div>
+       <div class="p-6"><span class="inline-block bg-blue-100 text-blue-600 text-xs font-semibold px-3 py-1 rounded-full mb-2" data-lang-id="Keluarga" data-lang-en="Family">Keluarga</span>
+        <h3 class="text-xl font-bold mb-2">Arung Jeram</h3>
+        <p class="text-gray-600 text-sm mb-4" data-lang-id="Petualangan seru menyusuri sungai buatan dengan arus yang menantang untuk seluruh keluarga" data-lang-en="Exciting adventure along an artificial river with challenging currents for the whole family">Petualangan seru menyusuri sungai buatan dengan arus yang menantang untuk seluruh keluarga</p>
+        <div class="flex items-center justify-between"><span class="text-sm text-gray-500"><i class="fas fa-user-friends mr-2"></i>Semua Usia</span> <button class="text-purple-600 font-semibold hover:text-purple-700" data-lang-id="Detail" data-lang-en="Details">Detail →</button>
+        </div>
+       </div>
+      </div><!-- Card 3 -->
+      <div class="attraction-card card-hover bg-white rounded-2xl overflow-hidden shadow-lg" data-category="kids">
+       <div class="h-48 bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center"><i class="fas fa-horse text-white text-6xl"></i>
+       </div>
+       <div class="p-6"><span class="inline-block bg-yellow-100 text-yellow-600 text-xs font-semibold px-3 py-1 rounded-full mb-2" data-lang-id="Anak-anak" data-lang-en="Kids">Anak-anak</span>
+        <h3 class="text-xl font-bold mb-2">Kora-Kora</h3>
+        <p class="text-gray-600 text-sm mb-4" data-lang-id="Ayunan kapal raksasa yang cocok untuk anak-anak dan keluarga dengan sensasi yang menyenangkan" data-lang-en="Giant ship swing suitable for children and families with a fun sensation">Ayunan kapal raksasa yang cocok untuk anak-anak dan keluarga dengan sensasi yang menyenangkan</p>
+        <div class="flex items-center justify-between"><span class="text-sm text-gray-500"><i class="fas fa-user-friends mr-2"></i>Min. 100 cm</span> <button class="text-purple-600 font-semibold hover:text-purple-700" data-lang-id="Detail" data-lang-en="Details">Detail →</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Tickets Section -->
+   <section id="tickets" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4 gradient-text" id="ticketsTitle">Harga Tiket</h2>
+      <p class="text-gray-600" data-lang-id="Pilih paket tiket yang sesuai dengan kebutuhanmu" data-lang-en="Choose the ticket package that suits your needs">Pilih paket tiket yang sesuai dengan kebutuhanmu</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Ticket 1 -->
+      <div class="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-purple-600 transition card-hover">
+       <div class="text-center mb-6">
+        <h3 class="text-2xl font-bold mb-2" data-lang-id="Reguler" data-lang-en="Regular">Reguler</h3>
+        <div class="text-4xl font-bold text-purple-600 mb-2">
+         Rp 200.000
+        </div>
+        <div class="text-sm text-gray-500" data-lang-id="Per Orang (Weekday)" data-lang-en="Per Person (Weekday)">
+         Per Orang (Weekday)
+        </div>
+       </div>
+       <ul class="space-y-3 mb-6">
+        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <span class="text-gray-600" data-lang-id="Akses semua wahana" data-lang-en="Access to all rides">Akses semua wahana</span></li>
+        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <span class="text-gray-600" data-lang-id="Berlaku Senin-Jumat" data-lang-en="Valid Monday-Friday">Berlaku Senin-Jumat</span></li>
+        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <span class="text-gray-600" data-lang-id="Tiket fisik atau digital" data-lang-en="Physical or digital ticket">Tiket fisik atau digital</span></li>
+       </ul><button class="w-full bg-purple-600 text-white py-3 rounded-full font-semibold hover:bg-purple-700 transition" data-lang-id="Pesan Sekarang" data-lang-en="Book Now">Pesan Sekarang</button>
+      </div><!-- Ticket 2 - Featured -->
+      <div class="bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl p-8 text-white transform scale-105 shadow-2xl">
+       <div class="text-center mb-6"><span class="inline-block bg-yellow-400 text-purple-900 text-xs font-bold px-3 py-1 rounded-full mb-2" data-lang-id="TERPOPULER" data-lang-en="MOST POPULAR">TERPOPULER</span>
+        <h3 class="text-2xl font-bold mb-2" data-lang-id="Weekend" data-lang-en="Weekend">Weekend</h3>
+        <div class="text-4xl font-bold mb-2">
+         Rp 250.000
+        </div>
+        <div class="text-sm opacity-80" data-lang-id="Per Orang (Weekend)" data-lang-en="Per Person (Weekend)">
+         Per Orang (Weekend)
+        </div>
+       </div>
+       <ul class="space-y-3 mb-6">
+        <li class="flex items-start"><i class="fas fa-check text-yellow-400 mt-1 mr-3"></i> <span data-lang-id="Akses semua wahana" data-lang-en="Access to all rides">Akses semua wahana</span></li>
+        <li class="flex items-start"><i class="fas fa-check text-yellow-400 mt-1 mr-3"></i> <span data-lang-id="Berlaku Sabtu-Minggu" data-lang-en="Valid Saturday-Sunday">Berlaku Sabtu-Minggu</span></li>
+        <li class="flex items-start"><i class="fas fa-check text-yellow-400 mt-1 mr-3"></i> <span data-lang-id="Skip line di 5 wahana" data-lang-en="Skip line at 5 rides">Skip line di 5 wahana</span></li>
+        <li class="flex items-start"><i class="fas fa-check text-yellow-400 mt-1 mr-3"></i> <span data-lang-id="Souvenir foto gratis" data-lang-en="Free photo souvenir">Souvenir foto gratis</span></li>
+       </ul><button class="w-full bg-white text-purple-600 py-3 rounded-full font-semibold hover:bg-gray-100 transition" data-lang-id="Pesan Sekarang" data-lang-en="Book Now">Pesan Sekarang</button>
+      </div><!-- Ticket 3 -->
+      <div class="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-purple-600 transition card-hover">
+       <div class="text-center mb-6">
+        <h3 class="text-2xl font-bold mb-2" data-lang-id="Annual Pass" data-lang-en="Annual Pass">Annual Pass</h3>
+        <div class="text-4xl font-bold text-purple-600 mb-2">
+         Rp 1.500.000
+        </div>
+        <div class="text-sm text-gray-500" data-lang-id="Per Orang (1 Tahun)" data-lang-en="Per Person (1 Year)">
+         Per Orang (1 Tahun)
+        </div>
+       </div>
+       <ul class="space-y-3 mb-6">
+        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <span class="text-gray-600" data-lang-id="Unlimited kunjungan 1 tahun" data-lang-en="Unlimited visits for 1 year">Unlimited kunjungan 1 tahun</span></li>
+        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <span class="text-gray-600" data-lang-id="Priority access semua wahana" data-lang-en="Priority access to all rides">Priority access semua wahana</span></li>
+        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <span class="text-gray-600" data-lang-id="Diskon 20% F&amp;B" data-lang-en="20% F&amp;B discount">Diskon 20% F&amp;B</span></li>
+        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <span class="text-gray-600" data-lang-id="Akses event eksklusif" data-lang-en="Exclusive event access">Akses event eksklusif</span></li>
+       </ul><button class="w-full bg-purple-600 text-white py-3 rounded-full font-semibold hover:bg-purple-700 transition" data-lang-id="Pesan Sekarang" data-lang-en="Book Now">Pesan Sekarang</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Gallery Section -->
+   <section id="gallery" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4 gradient-text" data-lang-id="Galeri Foto" data-lang-en="Photo Gallery">Galeri Foto</h2>
+      <p class="text-gray-600" data-lang-id="Lihat momen seru pengunjung di Dufan" data-lang-en="See exciting moments of visitors at Dufan">Lihat momen seru pengunjung di Dufan</p>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl card-hover flex items-center justify-center"><i class="fas fa-image text-white text-4xl"></i>
+      </div>
+      <div class="h-48 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-xl card-hover flex items-center justify-center"><i class="fas fa-image text-white text-4xl"></i>
+      </div>
+      <div class="h-48 bg-gradient-to-br from-green-400 to-emerald-400 rounded-xl card-hover flex items-center justify-center"><i class="fas fa-image text-white text-4xl"></i>
+      </div>
+      <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-xl card-hover flex items-center justify-center"><i class="fas fa-image text-white text-4xl"></i>
+      </div>
+      <div class="h-48 bg-gradient-to-br from-red-400 to-pink-400 rounded-xl card-hover flex items-center justify-center"><i class="fas fa-image text-white text-4xl"></i>
+      </div>
+      <div class="h-48 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-xl card-hover flex items-center justify-center"><i class="fas fa-image text-white text-4xl"></i>
+      </div>
+      <div class="h-48 bg-gradient-to-br from-teal-400 to-blue-400 rounded-xl card-hover flex items-center justify-center"><i class="fas fa-image text-white text-4xl"></i>
+      </div>
+      <div class="h-48 bg-gradient-to-br from-orange-400 to-red-400 rounded-xl card-hover flex items-center justify-center"><i class="fas fa-image text-white text-4xl"></i>
+      </div>
+     </div>
+     <div class="text-center mt-8"><button class="bg-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition" data-lang-id="Virtual Tour 360°" data-lang-en="Virtual Tour 360°">Virtual Tour 360°</button>
+     </div>
+    </div>
+   </section><!-- Events Section -->
+   <section id="events" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4 gradient-text" data-lang-id="Event &amp; Promo" data-lang-en="Events &amp; Promos">Event &amp; Promo</h2>
+      <p class="text-gray-600" data-lang-id="Jangan lewatkan event dan promo menarik bulan ini" data-lang-en="Don't miss this month's exciting events and promos">Jangan lewatkan event dan promo menarik bulan ini</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-8 card-hover"><span class="inline-block bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">PROMO</span>
+       <h3 class="text-2xl font-bold mb-3" data-lang-id="Diskon 30% Tiket Weekend" data-lang-en="30% Weekend Ticket Discount">Diskon 30% Tiket Weekend</h3>
+       <p class="text-gray-700 mb-4" data-lang-id="Dapatkan potongan 30% untuk pembelian tiket weekend. Berlaku hingga akhir bulan!" data-lang-en="Get 30% off weekend ticket purchases. Valid until the end of the month!">Dapatkan potongan 30% untuk pembelian tiket weekend. Berlaku hingga akhir bulan!</p>
+       <div class="flex items-center justify-between"><span class="text-sm text-gray-600"><i class="far fa-calendar mr-2"></i>1-31 Desember 2024</span> <button class="text-purple-600 font-semibold hover:text-purple-700" data-lang-id="Selengkapnya" data-lang-en="Learn More">Selengkapnya →</button>
+       </div>
+      </div>
+      <div class="bg-gradient-to-r from-blue-100 to-cyan-100 rounded-2xl p-8 card-hover"><span class="inline-block bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">EVENT</span>
+       <h3 class="text-2xl font-bold mb-3" data-lang-id="Festival Tahun Baru 2025" data-lang-en="New Year Festival 2025">Festival Tahun Baru 2025</h3>
+       <p class="text-gray-700 mb-4" data-lang-id="Rayakan tahun baru dengan konser musik, kembang api spektakuler, dan berbagai hiburan menarik." data-lang-en="Celebrate the new year with music concerts, spectacular fireworks, and various exciting entertainment.">Rayakan tahun baru dengan konser musik, kembang api spektakuler, dan berbagai hiburan menarik.</p>
+       <div class="flex items-center justify-between"><span class="text-sm text-gray-600"><i class="far fa-calendar mr-2"></i>31 Desember 2024</span> <button class="text-purple-600 font-semibold hover:text-purple-700" data-lang-id="Selengkapnya" data-lang-en="Learn More">Selengkapnya →</button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Testimonials Carousel -->
+   <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4 gradient-text" data-lang-id="Testimoni Pengunjung" data-lang-en="Visitor Testimonials">Testimoni Pengunjung</h2>
+      <p class="text-gray-600" data-lang-id="Apa kata mereka tentang Dufan" data-lang-en="What they say about Dufan">Apa kata mereka tentang Dufan</p>
+     </div>
+     <div class="relative">
+      <div id="testimonialCarousel" class="overflow-hidden">
+       <div class="flex transition-transform duration-500" id="testimonialTrack"><!-- Testimonial 1 -->
+        <div class="min-w-full px-4">
+         <div class="bg-white rounded-2xl p-8 shadow-lg max-w-3xl mx-auto">
+          <div class="flex items-center mb-4">
+           <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white font-bold text-xl">
+            A
+           </div>
+           <div class="ml-4">
+            <div class="font-bold">
+             Andi Wijaya
+            </div>
+            <div class="flex star-rating text-sm"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+            </div>
+           </div>
+          </div>
+          <p class="text-gray-600 italic" data-lang-id="Pengalaman yang luar biasa! Wahana Halilintar benar-benar memacu adrenalin. Anak-anak sangat senang dan kami pasti akan kembali lagi!" data-lang-en="An extraordinary experience! The Halilintar ride really pumps the adrenaline. The kids were very happy and we will definitely come back!">"Pengalaman yang luar biasa! Wahana Halilintar benar-benar memacu adrenalin. Anak-anak sangat senang dan kami pasti akan kembali lagi!"</p>
+         </div>
+        </div><!-- Testimonial 2 -->
+        <div class="min-w-full px-4">
+         <div class="bg-white rounded-2xl p-8 shadow-lg max-w-3xl mx-auto">
+          <div class="flex items-center mb-4">
+           <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center text-white font-bold text-xl">
+            S
+           </div>
+           <div class="ml-4">
+            <div class="font-bold">
+             Siti Nurhaliza
+            </div>
+            <div class="flex star-rating text-sm"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+            </div>
+           </div>
+          </div>
+          <p class="text-gray-600 italic" data-lang-id="Tempat yang sempurna untuk liburan keluarga. Fasilitasnya lengkap, bersih, dan pelayanannya ramah. Highly recommended!" data-lang-en="Perfect place for family vacation. Complete facilities, clean, and friendly service. Highly recommended!">"Tempat yang sempurna untuk liburan keluarga. Fasilitasnya lengkap, bersih, dan pelayanannya ramah. Highly recommended!"</p>
+         </div>
+        </div><!-- Testimonial 3 -->
+        <div class="min-w-full px-4">
+         <div class="bg-white rounded-2xl p-8 shadow-lg max-w-3xl mx-auto">
+          <div class="flex items-center mb-4">
+           <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full flex items-center justify-center text-white font-bold text-xl">
+            B
+           </div>
+           <div class="ml-4">
+            <div class="font-bold">
+             Budi Santoso
+            </div>
+            <div class="flex star-rating text-sm"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>
+            </div>
+           </div>
+          </div>
+          <p class="text-gray-600 italic" data-lang-id="Sudah beberapa kali berkunjung dan selalu ada wahana baru yang menarik. Harga tiket sebanding dengan pengalaman yang didapat." data-lang-en="Have visited several times and there are always interesting new rides. Ticket prices are worth the experience gained.">"Sudah beberapa kali berkunjung dan selalu ada wahana baru yang menarik. Harga tiket sebanding dengan pengalaman yang didapat."</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Carousel Controls --> <button id="prevTestimonial" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition"> <i class="fas fa-chevron-left text-purple-600"></i> </button> <button id="nextTestimonial" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition"> <i class="fas fa-chevron-right text-purple-600"></i> </button> <!-- Carousel Indicators -->
+      <div class="flex justify-center mt-6 space-x-2"><button class="testimonial-indicator w-3 h-3 rounded-full bg-purple-600"></button> <button class="testimonial-indicator w-3 h-3 rounded-full bg-gray-300"></button> <button class="testimonial-indicator w-3 h-3 rounded-full bg-gray-300"></button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Map Section -->
+   <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4 gradient-text" data-lang-id="Lokasi Kami" data-lang-en="Our Location">Lokasi Kami</h2>
+      <p class="text-gray-600" data-lang-id="Temukan kami di Taman Impian Jaya Ancol" data-lang-en="Find us at Taman Impian Jaya Ancol">Temukan kami di Taman Impian Jaya Ancol</p>
+     </div>
+     <div class="bg-gradient-to-br from-purple-400 to-blue-500 rounded-2xl p-8 text-white text-center"><i class="fas fa-map-marked-alt text-6xl mb-4"></i>
+      <h3 class="text-2xl font-bold mb-2">Dunia Fantasi</h3>
+      <p class="mb-4">Jl. Lodan Timur No.7, Ancol, Pademangan<br>
+       Jakarta Utara, DKI Jakarta 14430</p><button class="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition" data-lang-id="Buka di Google Maps" data-lang-en="Open in Google Maps">Buka di Google Maps</button>
+     </div>
+    </div>
+   </section><!-- Contact & Reservation Form -->
+   <section id="contact" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4 gradient-text" id="contactTitle">Hubungi Kami</h2>
+      <p class="text-gray-600" data-lang-id="Ada pertanyaan? Kami siap membantu Anda" data-lang-en="Have questions? We're ready to help you">Ada pertanyaan? Kami siap membantu Anda</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12"><!-- Contact Info -->
+      <div>
+       <h3 class="text-2xl font-bold mb-6" data-lang-id="Informasi Kontak" data-lang-en="Contact Information">Informasi Kontak</h3>
+       <div class="space-y-6">
+        <div class="flex items-start">
+         <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0"><i class="fas fa-phone text-purple-600"></i>
+         </div>
+         <div class="ml-4">
+          <div class="font-semibold text-gray-900" data-lang-id="Telepon" data-lang-en="Phone">
+           Telepon
+          </div>
+          <div class="text-gray-600">
+           (021) 2922-2222
+          </div>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0"><i class="fas fa-envelope text-purple-600"></i>
+         </div>
+         <div class="ml-4">
+          <div class="font-semibold text-gray-900">
+           Email
+          </div>
+          <div class="text-gray-600">
+           info@dufan.co.id
+          </div>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0"><i class="fas fa-clock text-purple-600"></i>
+         </div>
+         <div class="ml-4">
+          <div class="font-semibold text-gray-900" data-lang-id="Jam Operasional" data-lang-en="Operating Hours">
+           Jam Operasional
+          </div>
+          <div class="text-gray-600" data-lang-id="Setiap Hari: 10:00 - 18:00 WIB" data-lang-en="Daily: 10:00 - 18:00 WIB">
+           Setiap Hari: 10:00 - 18:00 WIB
+          </div>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0"><i class="fas fa-share-alt text-purple-600"></i>
+         </div>
+         <div class="ml-4">
+          <div class="font-semibold text-gray-900 mb-2" data-lang-id="Ikuti Kami" data-lang-en="Follow Us">
+           Ikuti Kami
+          </div>
+          <div class="flex space-x-3"><a href="#" class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition" target="_blank" rel="noopener noreferrer"> <i class="fab fa-facebook-f"></i> </a> <a href="#" class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition" target="_blank" rel="noopener noreferrer"> <i class="fab fa-instagram"></i> </a> <a href="#" class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition" target="_blank" rel="noopener noreferrer"> <i class="fab fa-twitter"></i> </a> <a href="#" class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition" target="_blank" rel="noopener noreferrer"> <i class="fab fa-youtube"></i> </a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Contact Form -->
+      <div>
+       <form id="contactForm" class="bg-white rounded-2xl p-8 shadow-lg">
+        <div class="mb-4"><label for="name" class="block text-gray-700 font-medium mb-2" data-lang-id="Nama Lengkap" data-lang-en="Full Name">Nama Lengkap</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 transition" placeholder="Masukkan nama Anda" data-lang-id-placeholder="Masukkan nama Anda" data-lang-en-placeholder="Enter your name">
+        </div>
+        <div class="mb-4"><label for="email" class="block text-gray-700 font-medium mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 transition" placeholder="nama@email.com" data-lang-id-placeholder="nama@email.com" data-lang-en-placeholder="name@email.com">
+        </div>
+        <div class="mb-4"><label for="phone" class="block text-gray-700 font-medium mb-2" data-lang-id="Nomor Telepon" data-lang-en="Phone Number">Nomor Telepon</label> <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 transition" placeholder="08xxxxxxxxxx">
+        </div>
+        <div class="mb-6"><label for="message" class="block text-gray-700 font-medium mb-2" data-lang-id="Pesan" data-lang-en="Message">Pesan</label> <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 transition resize-none" placeholder="Tulis pesan Anda di sini..." data-lang-id-placeholder="Tulis pesan Anda di sini..." data-lang-en-placeholder="Write your message here..."></textarea>
+        </div><button type="submit" class="w-full bg-purple-600 text-white py-4 rounded-lg font-semibold hover:bg-purple-700 transition flex items-center justify-center" id="submitBtn"> <span data-lang-id="Kirim Pesan" data-lang-en="Send Message">Kirim Pesan</span> <i class="fas fa-paper-plane ml-2"></i> </button>
+        <div id="formMessage" class="mt-4 text-center hidden"></div>
+       </form>
+      </div>
+     </div><!-- Rating Form -->
+     <div class="mt-12 bg-white rounded-2xl p-8 shadow-lg max-w-3xl mx-auto">
+      <h3 class="text-2xl font-bold mb-6 text-center" data-lang-id="Berikan Penilaian Anda" data-lang-en="Give Your Rating">Berikan Penilaian Anda</h3>
+      <form id="ratingForm">
+       <div class="mb-6"><label class="block text-gray-700 font-medium mb-3 text-center" data-lang-id="Bagaimana pengalaman Anda?" data-lang-en="How was your experience?">Bagaimana pengalaman Anda?</label>
+        <div class="flex justify-center space-x-2" id="starRating"><button type="button" class="rating-star text-4xl text-gray-300 hover:text-yellow-400 transition" data-rating="1"> <i class="far fa-star"></i> </button> <button type="button" class="rating-star text-4xl text-gray-300 hover:text-yellow-400 transition" data-rating="2"> <i class="far fa-star"></i> </button> <button type="button" class="rating-star text-4xl text-gray-300 hover:text-yellow-400 transition" data-rating="3"> <i class="far fa-star"></i> </button> <button type="button" class="rating-star text-4xl text-gray-300 hover:text-yellow-400 transition" data-rating="4"> <i class="far fa-star"></i> </button> <button type="button" class="rating-star text-4xl text-gray-300 hover:text-yellow-400 transition" data-rating="5"> <i class="far fa-star"></i> </button>
+        </div><input type="hidden" id="ratingValue" name="rating" value="0" required>
+       </div>
+       <div class="mb-6"><label for="ratingComment" class="block text-gray-700 font-medium mb-2" data-lang-id="Komentar (Opsional)" data-lang-en="Comment (Optional)">Komentar (Opsional)</label> <textarea id="ratingComment" name="comment" rows="3" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 transition resize-none" placeholder="Ceritakan pengalaman Anda..." data-lang-id-placeholder="Ceritakan pengalaman Anda..." data-lang-en-placeholder="Tell us about your experience..."></textarea>
+       </div><button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition" id="submitRatingBtn"> <span data-lang-id="Kirim Penilaian" data-lang-en="Submit Rating">Kirim Penilaian</span> </button>
+       <div id="ratingMessage" class="mt-4 text-center hidden"></div>
+      </form>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div>
+       <h3 class="text-xl font-bold mb-4 gradient-text">Dunia Fantasi</h3>
+       <p class="text-gray-400 text-sm" data-lang-id="Taman hiburan terbesar di Indonesia dengan pengalaman yang tak terlupakan untuk seluruh keluarga." data-lang-en="Indonesia's largest amusement park with unforgettable experiences for the whole family.">Taman hiburan terbesar di Indonesia dengan pengalaman yang tak terlupakan untuk seluruh keluarga.</p>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4" data-lang-id="Link Cepat" data-lang-en="Quick Links">Link Cepat</h4>
+       <ul class="space-y-2 text-sm">
+        <li><a href="#home" class="text-gray-400 hover:text-white transition" data-lang-id="Beranda" data-lang-en="Home">Beranda</a></li>
+        <li><a href="#attractions" class="text-gray-400 hover:text-white transition" data-lang-id="Wahana" data-lang-en="Attractions">Wahana</a></li>
+        <li><a href="#tickets" class="text-gray-400 hover:text-white transition" data-lang-id="Tiket" data-lang-en="Tickets">Tiket</a></li>
+        <li><a href="#events" class="text-gray-400 hover:text-white transition" data-lang-id="Event" data-lang-en="Events">Event</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4" data-lang-id="Informasi" data-lang-en="Information">Informasi</h4>
+       <ul class="space-y-2 text-sm">
+        <li><a href="#" class="text-gray-400 hover:text-white transition" data-lang-id="Tentang Kami" data-lang-en="About Us">Tentang Kami</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition" data-lang-id="Syarat &amp; Ketentuan" data-lang-en="Terms &amp; Conditions">Syarat &amp; Ketentuan</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition" data-lang-id="Kebijakan Privasi" data-lang-en="Privacy Policy">Kebijakan Privasi</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition" data-lang-id="FAQ" data-lang-en="FAQ">FAQ</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4" data-lang-id="Hubungi Kami" data-lang-en="Contact Us">Hubungi Kami</h4>
+       <ul class="space-y-2 text-sm text-gray-400">
+        <li><i class="fas fa-phone mr-2"></i>(021) 2922-2222</li>
+        <li><i class="fas fa-envelope mr-2"></i>info@dufan.co.id</li>
+        <li><i class="fas fa-map-marker-alt mr-2"></i>Ancol, Jakarta Utara</li>
+       </ul>
+      </div>
+     </div>
+     <div class="border-t border-gray-800 pt-8 text-center">
+      <p class="text-gray-400 text-sm" id="footerText">© 2024 Dufan. Semua hak dilindungi.</p>
+     </div>
+    </div>
+   </footer><!-- Chatbot Float Button -->
+   <div class="chatbot-float"><button id="chatbotBtn" class="bg-purple-600 text-white w-16 h-16 rounded-full shadow-2xl hover:bg-purple-700 transition transform hover:scale-110 flex items-center justify-center"> <i class="fas fa-comments text-2xl"></i> </button>
+   </div><!-- Chatbot Modal -->
+   <div id="chatbotModal" class="hidden fixed bottom-24 right-6 z-50">
+    <div class="bg-white rounded-2xl shadow-2xl w-80 md:w-96">
+     <div class="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-4 rounded-t-2xl flex justify-between items-center">
+      <div class="flex items-center"><i class="fas fa-robot text-2xl mr-3"></i>
+       <div>
+        <div class="font-bold" data-lang-id="Asisten Dufan" data-lang-en="Dufan Assistant">
+         Asisten Dufan
+        </div>
+        <div class="text-xs opacity-80" data-lang-id="Online" data-lang-en="Online">
+         Online
+        </div>
+       </div>
+      </div><button id="closeChatbot" class="hover:bg-purple-700 rounded-full p-2 transition"> <i class="fas fa-times"></i> </button>
+     </div>
+     <div id="chatMessages" class="p-4 h-80 overflow-y-auto bg-gray-50">
+      <div class="bg-white rounded-lg p-3 mb-3 shadow-sm">
+       <p class="text-sm text-gray-700" data-lang-id="Halo! Saya asisten virtual Dufan. Ada yang bisa saya bantu?" data-lang-en="Hello! I'm Dufan's virtual assistant. How can I help you?">Halo! Saya asisten virtual Dufan. Ada yang bisa saya bantu?</p>
+      </div>
+      <div class="space-y-2"><button class="chatbot-option w-full text-left bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg p-3 text-sm transition" data-lang-id="Jam operasional" data-lang-en="Operating hours">Jam operasional</button> <button class="chatbot-option w-full text-left bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg p-3 text-sm transition" data-lang-id="Harga tiket" data-lang-en="Ticket prices">Harga tiket</button> <button class="chatbot-option w-full text-left bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg p-3 text-sm transition" data-lang-id="Wahana populer" data-lang-en="Popular attractions">Wahana populer</button> <button class="chatbot-option w-full text-left bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg p-3 text-sm transition" data-lang-id="Cara menuju lokasi" data-lang-en="How to get there">Cara menuju lokasi</button>
+      </div>
+     </div>
+     <div class="p-4 border-t">
+      <div class="flex space-x-2"><input type="text" id="chatInput" placeholder="Ketik pesan..." class="flex-1 px-4 py-2 border-2 border-gray-300 rounded-full focus:outline-none focus:border-purple-500" data-lang-id-placeholder="Ketik pesan..." data-lang-en-placeholder="Type a message..."> <button id="sendChatBtn" class="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition"> <i class="fas fa-paper-plane"></i> </button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            site_title: "Dunia Fantasi",
+            hero_title: "Jelajahi Keajaiban Dufan",
+            hero_subtitle: "Taman hiburan terbesar di Indonesia dengan berbagai wahana seru",
+            about_title: "Tentang Dufan",
+            tickets_title: "Harga Tiket",
+            contact_title: "Hubungi Kami",
+            footer_text: "© 2024 Dufan. Semua hak dilindungi.",
+            primary_color: "#9333ea",
+            secondary_color: "#7c3aed",
+            accent_color: "#a855f7",
+            background_color: "#ffffff",
+            text_color: "#0f172a",
+            font_family: "Poppins",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            document.getElementById('siteTitle').textContent = config.site_title || defaultConfig.site_title;
+            document.getElementById('heroTitle').textContent = config.hero_title || defaultConfig.hero_title;
+            document.getElementById('heroSubtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+            document.getElementById('aboutTitle').textContent = config.about_title || defaultConfig.about_title;
+            document.getElementById('ticketsTitle').textContent = config.tickets_title || defaultConfig.tickets_title;
+            document.getElementById('contactTitle').textContent = config.contact_title || defaultConfig.contact_title;
+            document.getElementById('footerText').textContent = config.footer_text || defaultConfig.footer_text;
+
+            const primaryColor = config.primary_color || defaultConfig.primary_color;
+            const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+            const accentColor = config.accent_color || defaultConfig.accent_color;
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const fontFamily = config.font_family || defaultConfig.font_family;
+            const fontSize = config.font_size || defaultConfig.font_size;
+
+            document.documentElement.style.setProperty('--primary-color', primaryColor);
+            document.documentElement.style.setProperty('--secondary-color', secondaryColor);
+            document.documentElement.style.setProperty('--accent-color', accentColor);
+
+            const allPrimaryElements = document.querySelectorAll('.bg-purple-600, .text-purple-600, .border-purple-600, .hover\\:bg-purple-700, .hover\\:text-purple-700');
+            allPrimaryElements.forEach(el => {
+                if (el.classList.contains('bg-purple-600')) {
+                    el.style.backgroundColor = primaryColor;
+                }
+                if (el.classList.contains('text-purple-600')) {
+                    el.style.color = primaryColor;
+                }
+                if (el.classList.contains('border-purple-600')) {
+                    el.style.borderColor = primaryColor;
+                }
+            });
+
+            const mainBody = document.getElementById('mainBody');
+            mainBody.style.backgroundColor = backgroundColor;
+            mainBody.style.color = textColor;
+
+            document.body.style.fontFamily = `${fontFamily}, Poppins, sans-serif`;
+            document.body.style.fontSize = `${fontSize}px`;
+
+            const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            headings.forEach(h => {
+                const currentSize = parseFloat(window.getComputedStyle(h).fontSize);
+                const scale = fontSize / 16;
+                h.style.fontSize = `${currentSize * scale}px`;
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            window.elementSdk.config.primary_color = value;
+                            window.elementSdk.setConfig({ primary_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.secondary_color || defaultConfig.secondary_color,
+                        set: (value) => {
+                            window.elementSdk.config.secondary_color = value;
+                            window.elementSdk.setConfig({ secondary_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.accent_color || defaultConfig.accent_color,
+                        set: (value) => {
+                            window.elementSdk.config.accent_color = value;
+                            window.elementSdk.setConfig({ accent_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            window.elementSdk.config.background_color = value;
+                            window.elementSdk.setConfig({ background_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            window.elementSdk.config.text_color = value;
+                            window.elementSdk.setConfig({ text_color: value });
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        window.elementSdk.config.font_family = value;
+                        window.elementSdk.setConfig({ font_family: value });
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        window.elementSdk.config.font_size = value;
+                        window.elementSdk.setConfig({ font_size: value });
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["site_title", config.site_title || defaultConfig.site_title],
+                ["hero_title", config.hero_title || defaultConfig.hero_title],
+                ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                ["about_title", config.about_title || defaultConfig.about_title],
+                ["tickets_title", config.tickets_title || defaultConfig.tickets_title],
+                ["contact_title", config.contact_title || defaultConfig.contact_title],
+                ["footer_text", config.footer_text || defaultConfig.footer_text]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        let currentLanguage = 'id';
+        let allRecords = [];
+
+        const dataHandler = {
+            onDataChanged(data) {
+                allRecords = data;
+            }
+        };
+
+        if (window.dataSdk) {
+            window.dataSdk.init(dataHandler);
+        }
+
+        // Counter Animation
+        function animateCounter(id, target, suffix = '') {
+            let current = 0;
+            const increment = target / 50;
+            const element = document.getElementById(id);
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = Math.round(target) + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.round(current) + suffix;
+                }
+            }, 30);
+        }
+
+        // Initialize counters
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter('counter1', 40, '+');
+                    animateCounter('counter2', 2500000, '+');
+                    animateCounter('counter3', 39);
+                    animateCounter('counter4', 4.8, '★');
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.getElementById('counter1'));
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.getElementById('mainBody');
+        const navbar = document.getElementById('navbar');
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            body.classList.toggle('light');
+            
+            if (body.classList.contains('dark')) {
+                body.style.backgroundColor = '#0f172a';
+                body.style.color = '#f1f5f9';
+                navbar.style.backgroundColor = '#1e293b';
+                darkModeToggle.innerHTML = '<i class="fas fa-sun text-yellow-400"></i>';
+            } else {
+                body.style.backgroundColor = '#ffffff';
+                body.style.color = '#0f172a';
+                navbar.style.backgroundColor = '#ffffff';
+                darkModeToggle.innerHTML = '<i class="fas fa-moon text-gray-700"></i>';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search Modal
+        const searchBtn = document.getElementById('searchBtn');
+        const searchModal = document.getElementById('searchModal');
+        const closeSearch = document.getElementById('closeSearch');
+        const searchInput = document.getElementById('searchInput');
+
+        searchBtn.addEventListener('click', () => {
+            searchModal.classList.remove('hidden');
+            searchInput.focus();
+        });
+
+        closeSearch.addEventListener('click', () => {
+            searchModal.classList.add('hidden');
+        });
+
+        searchModal.addEventListener('click', (e) => {
+            if (e.target === searchModal) {
+                searchModal.classList.add('hidden');
+            }
+        });
+
+        // Filter Attractions
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const attractionCards = document.querySelectorAll('.attraction-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-purple-600', 'text-white');
+                    b.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                
+                btn.classList.remove('bg-gray-200', 'text-gray-700');
+                btn.classList.add('bg-purple-600', 'text-white');
+                
+                attractionCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        card.classList.add('fade-in');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Testimonial Carousel
+        let currentTestimonial = 0;
+        const testimonialTrack = document.getElementById('testimonialTrack');
+        const testimonialIndicators = document.querySelectorAll('.testimonial-indicator');
+        const totalTestimonials = 3;
+
+        function updateTestimonial(index) {
+            testimonialTrack.style.transform = `translateX(-${index * 100}%)`;
+            testimonialIndicators.forEach((indicator, i) => {
+                if (i === index) {
+                    indicator.classList.remove('bg-gray-300');
+                    indicator.classList.add('bg-purple-600');
+                } else {
+                    indicator.classList.remove('bg-purple-600');
+                    indicator.classList.add('bg-gray-300');
+                }
+            });
+        }
+
+        document.getElementById('prevTestimonial').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+            updateTestimonial(currentTestimonial);
+        });
+
+        document.getElementById('nextTestimonial').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            updateTestimonial(currentTestimonial);
+        });
+
+        testimonialIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentTestimonial = index;
+                updateTestimonial(currentTestimonial);
+            });
+        });
+
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            updateTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Contact Form
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (allRecords.length >= 999) {
+                formMessage.textContent = currentLanguage === 'id' 
+                    ? 'Maaf, batas maksimal 999 pesan telah tercapai. Silakan hubungi kami melalui telepon.'
+                    : 'Sorry, the maximum limit of 999 messages has been reached. Please contact us by phone.';
+                formMessage.className = 'mt-4 text-center text-red-600 font-semibold';
+                formMessage.classList.remove('hidden');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>' + (currentLanguage === 'id' ? 'Mengirim...' : 'Sending...');
+
+            const formData = {
+                id: Date.now().toString(),
+                type: 'contact',
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            if (window.dataSdk) {
+                const result = await window.dataSdk.create(formData);
+                
+                if (result.isOk) {
+                    formMessage.textContent = currentLanguage === 'id' 
+                        ? '✓ Pesan berhasil dikirim! Kami akan segera menghubungi Anda.'
+                        : '✓ Message sent successfully! We will contact you soon.';
+                    formMessage.className = 'mt-4 text-center text-green-600 font-semibold';
+                    contactForm.reset();
+                } else {
+                    formMessage.textContent = currentLanguage === 'id'
+                        ? '✗ Terjadi kesalahan. Silakan coba lagi.'
+                        : '✗ An error occurred. Please try again.';
+                    formMessage.className = 'mt-4 text-center text-red-600 font-semibold';
+                }
+            }
+
+            formMessage.classList.remove('hidden');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>' + (currentLanguage === 'id' ? 'Kirim Pesan' : 'Send Message') + '</span><i class="fas fa-paper-plane ml-2"></i>';
+        });
+
+        // Rating Form
+        const ratingForm = document.getElementById('ratingForm');
+        const ratingStars = document.querySelectorAll('.rating-star');
+        const ratingValue = document.getElementById('ratingValue');
+        const ratingMessage = document.getElementById('ratingMessage');
+        const submitRatingBtn = document.getElementById('submitRatingBtn');
+
+        let selectedRating = 0;
+
+        ratingStars.forEach(star => {
+            star.addEventListener('click', (e) => {
+                e.preventDefault();
+                selectedRating = parseInt(star.dataset.rating);
+                ratingValue.value = selectedRating;
+                
+                ratingStars.forEach((s, index) => {
+                    if (index < selectedRating) {
+                        s.innerHTML = '<i class="fas fa-star"></i>';
+                        s.classList.remove('text-gray-300');
+                        s.classList.add('text-yellow-400');
+                    } else {
+                        s.innerHTML = '<i class="far fa-star"></i>';
+                        s.classList.remove('text-yellow-400');
+                        s.classList.add('text-gray-300');
+                    }
+                });
+            });
+        });
+
+        ratingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (selectedRating === 0) {
+                ratingMessage.textContent = currentLanguage === 'id'
+                    ? 'Silakan pilih rating terlebih dahulu'
+                    : 'Please select a rating first';
+                ratingMessage.className = 'mt-4 text-center text-red-600 font-semibold';
+                ratingMessage.classList.remove('hidden');
+                return;
+            }
+
+            if (allRecords.length >= 999) {
+                ratingMessage.textContent = currentLanguage === 'id'
+                    ? 'Maaf, batas maksimal 999 penilaian telah tercapai.'
+                    : 'Sorry, the maximum limit of 999 ratings has been reached.';
+                ratingMessage.className = 'mt-4 text-center text-red-600 font-semibold';
+                ratingMessage.classList.remove('hidden');
+                return;
+            }
+
+            submitRatingBtn.disabled = true;
+            submitRatingBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>' + (currentLanguage === 'id' ? 'Mengirim...' : 'Submitting...');
+
+            const ratingData = {
+                id: Date.now().toString(),
+                type: 'rating',
+                rating: selectedRating,
+                message: document.getElementById('ratingComment').value,
+                timestamp: new Date().toISOString()
+            };
+
+            if (window.dataSdk) {
+                const result = await window.dataSdk.create(ratingData);
+                
+                if (result.isOk) {
+                    ratingMessage.textContent = currentLanguage === 'id'
+                        ? '✓ Terima kasih atas penilaian Anda!'
+                        : '✓ Thank you for your rating!';
+                    ratingMessage.className = 'mt-4 text-center text-green-600 font-semibold';
+                    ratingForm.reset();
+                    selectedRating = 0;
+                    ratingStars.forEach(s => {
+                        s.innerHTML = '<i class="far fa-star"></i>';
+                        s.classList.remove('text-yellow-400');
+                        s.classList.add('text-gray-300');
+                    });
+                } else {
+                    ratingMessage.textContent = currentLanguage === 'id'
+                        ? '✗ Terjadi kesalahan. Silakan coba lagi.'
+                        : '✗ An error occurred. Please try again.';
+                    ratingMessage.className = 'mt-4 text-center text-red-600 font-semibold';
+                }
+            }
+
+            ratingMessage.classList.remove('hidden');
+            submitRatingBtn.disabled = false;
+            submitRatingBtn.innerHTML = '<span>' + (currentLanguage === 'id' ? 'Kirim Penilaian' : 'Submit Rating') + '</span>';
+        });
+
+        // Chatbot
+        const chatbotBtn = document.getElementById('chatbotBtn');
+        const chatbotModal = document.getElementById('chatbotModal');
+        const closeChatbot = document.getElementById('closeChatbot');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendChatBtn = document.getElementById('sendChatBtn');
+
+        chatbotBtn.addEventListener('click', () => {
+            chatbotModal.classList.toggle('hidden');
+        });
+
+        closeChatbot.addEventListener('click', () => {
+            chatbotModal.classList.add('hidden');
+        });
+
+        const chatbotOptions = document.querySelectorAll('.chatbot-option');
+        chatbotOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const question = option.textContent;
+                addChatMessage(question, 'user');
+                
+                setTimeout(() => {
+                    let answer = '';
+                    if (currentLanguage === 'id') {
+                        if (question.includes('operasional')) {
+                            answer = 'Dufan buka setiap hari dari jam 10:00 - 18:00 WIB.';
+                        } else if (question.includes('tiket')) {
+                            answer = 'Harga tiket weekday Rp 200.000 dan weekend Rp 250.000 per orang.';
+                        } else if (question.includes('populer')) {
+                            answer = 'Wahana paling populer: Halilintar, Arung Jeram, dan Kora-Kora.';
+                        } else if (question.includes('lokasi')) {
+                            answer = 'Kami berada di Taman Impian Jaya Ancol, Jakarta Utara. Bisa diakses via Tol Jakarta-Cikampek.';
+                        }
+                    } else {
+                        if (question.includes('hours')) {
+                            answer = 'Dufan is open daily from 10:00 AM - 6:00 PM WIB.';
+                        } else if (question.includes('prices')) {
+                            answer = 'Weekday tickets are Rp 200,000 and weekend tickets are Rp 250,000 per person.';
+                        } else if (question.includes('attractions')) {
+                            answer = 'Most popular rides: Halilintar, Arung Jeram, and Kora-Kora.';
+                        } else if (question.includes('get there')) {
+                            answer = 'We are located at Taman Impian Jaya Ancol, North Jakarta. Accessible via Jakarta-Cikampek Toll Road.';
+                        }
+                    }
+                    addChatMessage(answer, 'bot');
+                }, 500);
+            });
+        });
+
+        sendChatBtn.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                addChatMessage(message, 'user');
+                chatInput.value = '';
+                
+                setTimeout(() => {
+                    const response = currentLanguage === 'id'
+                        ? 'Terima kasih atas pesan Anda. Tim kami akan segera merespons!'
+                        : 'Thank you for your message. Our team will respond soon!';
+                    addChatMessage(response, 'bot');
+                }, 500);
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendChatBtn.click();
+            }
+        });
+
+        function addChatMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = sender === 'user' 
+                ? 'bg-purple-600 text-white rounded-lg p-3 mb-3 ml-12 shadow-sm'
+                : 'bg-white rounded-lg p-3 mb-3 mr-12 shadow-sm';
+            messageDiv.innerHTML = `<p class="text-sm">${text}</p>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Language Switcher
+        const langBtn = document.getElementById('langBtn');
+
+        langBtn.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'id' ? 'en' : 'id';
+            
+            document.querySelectorAll('[data-lang-id]').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = currentLanguage === 'id' 
+                        ? el.dataset.langIdPlaceholder 
+                        : el.dataset.langEnPlaceholder;
+                } else {
+                    el.textContent = currentLanguage === 'id' 
+                        ? el.dataset.langId 
+                        : el.dataset.langEn;
+                }
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Scroll to Top on Navbar Logo Click
+        document.getElementById('siteTitle').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Navbar Shadow on Scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Fade-in Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .card-hover');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            fadeObserver.observe(el);
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9adcf25af11f91b3',t:'MTc2NTcwNzM5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
